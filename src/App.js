@@ -1,14 +1,15 @@
 import './App.css';
 import Nav from './nav.js';
 import PopularRecipies from './popularRecipies.js';
-import menuVisible from './nav.js';
-console.log(menuVisible)
+import PopularCategories from './popularCatagories.js';
+
 function App() {
   return (
     
-    <div className="App md:overflow-visible overflow-hidden">
-      <Nav style={{ zIndex: '999' }} />
+    <div className="App md:overflow-visible overflow-hidden flex flex-col">
+      <Nav />
       <PopularRecipies />
+      <PopularCategories/>
     </div>
 
   );
