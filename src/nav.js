@@ -13,9 +13,9 @@ const Nav = () => {
     };
 
     return (
-        <nav className="h-20 bg-gray-100 no-underline flex items-center relative">
+        <nav className="h-20 bg-white no-underline flex items-center relative border-b-2">
             <label className="font-extrabold w-full text-left text-3xl text-[#E1611F] pl-8">FlavZ</label>
-            <div id="navLinks" className={`absolute  md:static ${menuVisible ? 'block' : 'hidden'} md:flex md:bg-gray-100 bg-white min-h-full top-0 right-0 bottom-0 left-0 md:h-20 z-10 w-full items-center px-5`}>
+            <div id="navLinks" className={`absolute  md:static ${menuVisible ? 'block' : 'hidden'} md:flex bg-white min-h-full top-0 right-0 bottom-0 left-0 md:h-20 z-10 w-full items-center px-5`}>
                 <ul className="flex md:flex-row flex-col md:items-center text-center w-full text-[#373743] gap-8 md:gap-[4vw] mt-32 md:mt-0">
                     <li className="hover:underline hover:text-[#656C7B]"><a href="/">Recipies</a></li>
                     <li className="hover:underline hover:text-[#656C7B]"><a href="/">About Us</a></li>
@@ -23,10 +23,10 @@ const Nav = () => {
                 </ul>
             </div>
             <ul className={`flex items-center gap-[4vw] md:gap-[3vw] px-8 pl-32 ${menuVisible ? ' z-20 w-fit gap-[8vw] mx-auto justify-center' : ''} `}>
-            <li className="text-[#E1611F]"><a href="#"><FontAwesomeIcon icon={faMagnifyingGlass} /></a></li>
-            <li className="text-[#E1611F]"><a href="#"><FontAwesomeIcon icon={faBagShopping} /></a></li>
-            <li className="text-[#E1611F]"><a href="#"><FontAwesomeIcon icon={faUser} /></a></li>
-        </ul>
+                <li className="text-[#E1611F]"><a href="#"><FontAwesomeIcon icon={faMagnifyingGlass} /></a></li>
+                <li className="text-[#E1611F]"><a href="#"><FontAwesomeIcon icon={faBagShopping} /></a></li>
+                <li className="text-[#E1611F]"><a href="#"><FontAwesomeIcon icon={faUser} /></a></li>
+            </ul>
 
                     
             <div className="relative z-20">
