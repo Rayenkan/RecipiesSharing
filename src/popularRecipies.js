@@ -8,7 +8,7 @@ import food2 from './imgs/food2.avif';
 
 const popularRecipies=() =>{
     return (
-        <div class="flex flex-col-2 md:h-[80vh] h-[35%] md:mt-12 mt-8 md:my-12 bg-orange-50  ">
+        <div class="flex flex-col-2 md:h-[80vh] h-[35%] md:mt-12 mt-8 md:mb-6 bg-white  ">
             <div class="w-[60%] md:pl-8 pl-4">
                 <p class="text-black text-lg md:text-4xl w-full h-fit md:my-5 my-2 text-left ">let's start cooking with </p>
                 <p class="uppercase text-2xl md:text-7xl w-full text-left text-[#E1611F] md:my-5 my-2 ">Popular Recipies</p>
