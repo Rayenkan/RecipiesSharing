@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 const PopularCategories = () => {
   const [categories, setCategories] = useState([]);
-  const sliderRef = useRef(null);
   const apiKey = '1';
 
   useEffect(() => {
@@ -21,11 +20,12 @@ const PopularCategories = () => {
 
         const data = await response.json();
 
-        setCategories(data.categories);
+        setCategories(data.categories);    
       } catch (error) {
         console.error('Error fetching data:', error.message);
       }
     };
+    
 
     getAllMealCategories();
   }, []);
@@ -71,8 +71,8 @@ const PopularCategories = () => {
 
   return (
     <div className="md:h-[50vh] h-72 md:mt-12 mt-8 md:my-12 bg-orange-50 w-[90%] ml-[5%]">
-      <h2 className="text-center mt-8 md:mb-5 text-xl">Popular Categories</h2>
-      <Slider ref={sliderRef} {...settings}>
+      <h2 className="text-center mt-8 md:mb-5 text-2xl">Popular Categories</h2>
+      <Slider {...settings}>
         {categories.map((category) => (
           <div key={category.idCategory} className="w-52 h-36 rounded-full">
             <img src={category.strCategoryThumb} alt={category.strCategory} className="" />

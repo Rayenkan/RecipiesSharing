@@ -2,14 +2,16 @@ import './App.css';
 import Nav from './nav.js';
 import PopularRecipies from './popularRecipies.js';
 import PopularCategories from './popularCatagories.js';
+import WhatToCockToday from './whatToCockToday.js';
 
 function App() {
   return (
     
-    <div className="App md:overflow-visible overflow-hidden flex flex-col">
+    <div className="App  overflow-hidden flex flex-col">
       <Nav />
       <PopularRecipies />
       <PopularCategories/>
+      <WhatToCockToday/>
     </div>
 
   );
