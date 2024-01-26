@@ -37,7 +37,7 @@ const PopularCategories = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1500,
+    autoplaySpeed: 3500,
     pauseOnHover: true,
     responsive: [
       {
@@ -71,7 +71,7 @@ const PopularCategories = () => {
 
   return (
     <div className="md:h-[50vh] h-72 md:mt-12 mt-8 md:my-12 bg-orange-50 w-[90%] ml-[5%]">
-      <h2 className="text-center mt-8 md:mb-5 text-2xl">Popular Categories</h2>
+      <h2 className="text-center mt-8 md:mb-5 text-2xl font-extrabold">Popular Categories</h2>
       <Slider {...settings}>
         {categories.map((category) => (
           <div key={category.idCategory} className="w-52 h-36 rounded-full">
