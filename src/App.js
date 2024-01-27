@@ -8,7 +8,7 @@ import AboutUs from './AboutUs.js';
 function App() {
   return (
     
-    <div className="App  overflow-hidden flex flex-col">
+    <div className="App  overflow-hidden ">
       <Nav />
       <PopularRecipies />
       <PopularCategories/>

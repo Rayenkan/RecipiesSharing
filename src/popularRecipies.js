@@ -38,7 +38,7 @@ const popularRecipies=() =>{
                                 flex
                                 text-center
                                 ">
-                                    Generate Random Meal 
+                                    Random Meal 
                     </button>
             </div>
             <div class="md:w-[40%] w-[30%]  relative">

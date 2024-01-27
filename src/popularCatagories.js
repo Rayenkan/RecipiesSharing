@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -70,7 +70,7 @@ const PopularCategories = () => {
   };
 
   return (
-    <div className="md:h-[50vh] h-72 md:mt-12 mt-8 bg-orange-50 w-[90%] ml-[5%]">
+    <div className="md:h-[25vh] lg:h-[75vh] h-[30%] mt-10 mb-12 bg-white w-[96%] ml-[2%] pt-10">
       <h2 className="text-center mt-8 md:mb-5 text-2xl font-extrabold">Popular Categories</h2>
       <Slider {...settings}>
         {categories.map((category) => (
