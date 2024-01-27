@@ -4,11 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const WhatToCockToday = () => {
-  const apiKey = '1';
   const [Meals, setMeals] = useState([]);
-  const [category, setCategory] = useState("");
-  const [count, setCount] = useState();
-
   useEffect(() => {
     const GetMeals = async () => {
       const m = [];
@@ -74,16 +70,16 @@ const WhatToCockToday = () => {
   };
 
   return (
-    <div className="md:h-[40vh] lg:h-[75vh] h-[30%] mt-12 bg-orange-50 w-[96%] ml-[2%] pt-10">
+    <div className="md:h-[40vh] lg:h-[75vh] h-[30%] mt-10 mb-12 bg-white w-[96%] ml-[2%] pt-10">
       <div>
         <p className="text-2xl font-extrabold">What To Cook Today </p>
         <p className="text-sm text-gray-600">Fast, Fresh, and FoolProof</p>
       </div>
-      <Slider {...settings}>
+      <Slider {...settings} >
         {Meals.map((Meal) => (
           <div className="flex flex-row items-center justify-center mt-4">
             <div className="h-[50%] flex items-center justify-center"> {/* Center the image */}
-              <img src={Meal.strMealThumb} className="rounded w-full md:w-60 h-full" alt={Meal.strMeal} />
+              <img src={Meal.strMealThumb} className="rounded w-[95%] h-full" alt={Meal.strMeal} />
             </div>
             <div className="mx-2 h-[50%]">
               <p className="text-left text-md truncate font-mediumbold">{Meal.strMeal}</p>
