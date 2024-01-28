@@ -70,7 +70,7 @@ const PopularCategories = () => {
   };
 
   return (
-    <div className="md:h-[25vh] lg:h-[75vh] h-[30%] mt-10 mb-12 bg-white w-[96%] ml-[2%] pt-10">
+    <div className="md:h-[25vh] lg:h-[70vh] h-[30%] mt-10 mb-12 bg-orange-50 w-[96%] ml-[2%] pt-10">
       <h2 className="text-center mt-8 md:mb-5 text-2xl font-extrabold">Popular Categories</h2>
       <Slider {...settings}>
         {categories.map((category) => (
