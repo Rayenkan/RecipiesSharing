@@ -5,6 +5,7 @@ import PopularCategories from './popularCatagories.js';
 import WhatToCockToday from './whatToCockToday.js';
 import AboutUs from './AboutUs.js';
 import OurCommunity from './ReadyToCock.js'
+import Footer from './footer.js';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <WhatToCockToday/>
       <AboutUs/>
       <OurCommunity/>
+      <Footer/>
     </div>
 
   );
