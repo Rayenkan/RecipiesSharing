@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const RecipeDetail = (props) => {
   const id = props.data;
-  const [meal, setMeal] = useState(null);
+  const [meal, setMeal] = useState([]);
 
   useEffect(() => {
     const getAllMealCategories = async () => {
@@ -16,8 +16,7 @@ const RecipeDetail = (props) => {
         }
 
         const fetchedMeal = await response.json();
-        setMeal(fetchedMeal.meals[0]); // Assuming the API response has a "meals" array
-
+        setMeal(fetchedMeal.meals ? fetchedMeal.meals[0] : null); // Check if "meals" array exists
       } catch (error) {
         console.error('Error fetching data:', error.message);
       }
@@ -26,17 +25,16 @@ const RecipeDetail = (props) => {
     getAllMealCategories();
   }, [id]);
 
-  if (!meal) {
-    return <div>Loading...</div>; // Add a loading state or UI while waiting for data
-  }
-
   return (
-    <div>
-      <div>
-        <img src={meal.strMealThumb} className="rounded w-[95%] h-full" alt={meal.strMeal} />
+    <div className="flex flex-col-2 md:h-[40vh] lg:h-[80vh] h-[35%] m-5 bg-white ">
+      <div className="w-[50%] p-5">
+        {meal && (
+          <img src={meal.strMealThumb} className="rounded w-[95%] h-full" alt={meal.strMeal} />
+        )}
       </div>
-      <div>
-        {/* Render other details using `meal` */}
+      <div class=" w-[50%] py-5 pt-10 text-left">
+        <p class="text-5xl  font-extrabold ">{meal.strMeal}</p>
+        <p class='text-sm pt-3 pl-2'>{meal.strArea}</p>
       </div>
     </div>
   );

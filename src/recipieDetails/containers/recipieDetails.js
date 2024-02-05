@@ -7,7 +7,7 @@ function RecipieDetails() {
   const {id } = useParams()
   return (
     
-    <div className="App  overflow-hidden ">
+    <div className="App  overflow-hidden bg-gray-200 ">
       <Nav />
       {console.log(id)}
       <RecipeDetail data={id}/>
