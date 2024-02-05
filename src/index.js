@@ -11,7 +11,7 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path='/Recipe' element={<RecipieDetails />} /> {/* Fix the component name */}
+        <Route path='/Recipe/:id' element={<RecipieDetails />} /> 
       </Routes>
     </Router>
 );
