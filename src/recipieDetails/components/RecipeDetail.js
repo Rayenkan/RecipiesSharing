@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const RecipeDetail = (props) => {
   const id = props.data;
@@ -16,7 +17,7 @@ const RecipeDetail = (props) => {
         }
 
         const fetchedMeal = await response.json();
-        setMeal(fetchedMeal.meals ? fetchedMeal.meals[0] : null); // Check if "meals" array exists
+        setMeal(fetchedMeal.meals[0]); 
       } catch (error) {
         console.error('Error fetching data:', error.message);
       }
@@ -32,9 +33,24 @@ const RecipeDetail = (props) => {
           <img src={meal.strMealThumb} className="rounded w-[95%] h-full" alt={meal.strMeal} />
         )}
       </div>
-      <div class=" w-[50%] py-5 pt-10 text-left">
-        <p class="text-5xl  font-extrabold ">{meal.strMeal}</p>
-        <p class='text-sm pt-3 pl-2'>{meal.strArea}</p>
+      <div class=" w-[50%] px-5 pt-10 text-left">
+      <p class="text-5xl  font-extrabold text-orange-600 ">{meal.strMeal}</p>
+        <ul class="list-disc">
+          <li><p class='text-sm pt-5 pl-2'><span class="text-xl">Region : </span> {meal.strArea}</p></li>
+          <li><p class='text-sm pt-5 pl-2'><span class="text-xl">Tags : </span> {meal.strTags}</p></li>
+        </ul>
+        {meal.strYoutube && (
+          <iframe
+          class="w-[80%] h-[50%] my-5"
+          src={`https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}`}
+          title="YouTube video"
+          allowFullScreen
+        ></iframe>
+
+        )}
+        
+        
+        <button class="bg-white border-orange-600 text-orange-600 w-[40%] rounded border-[1px]">Order the Food</button>
       </div>
     </div>
   );
