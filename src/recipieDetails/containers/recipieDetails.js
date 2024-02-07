@@ -1,7 +1,8 @@
 import './recipieDetails.css';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import Nav from '../../homePage/components/nav.js';
 import Footer from '../../homePage/components/footer.js';
-import { useParams } from 'react-router-dom';
 import RecipeDetail from '../components/RecipeDetail.js';
 import Ingredients from '../components/ingrediants.js';
 import Instructions from '../components/instructions.js';
@@ -9,6 +10,9 @@ import WhatToCockToday from '../../homePage/components/whatToCockToday.js';
 
 function RecipieDetails() {
   const {id } = useParams()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [id])
   return (
     
     <div className="App  overflow-hidden bg-gray-200 ">

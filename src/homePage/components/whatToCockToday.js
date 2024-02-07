@@ -1,3 +1,4 @@
+// WhatToCockToday.js
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -6,12 +7,14 @@ import { Link } from "react-router-dom";
 
 const WhatToCockToday = () => {
   const [Meals, setMeals] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const GetMeals = async () => {
+    const getMeals = async () => {
       const m = [];
-      for (let i = 0; i < 10; i++) {
-        const apiUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
-        try {
+      try {
+        for (let i = 0; i < 10; i++) {
+          const apiUrl = "https://www.themealdb.com/api/json/v1/1/random.php";
           const response = await fetch(apiUrl);
 
           if (!response.ok) {
@@ -19,16 +22,17 @@ const WhatToCockToday = () => {
           }
 
           const data = await response.json();
-
           m.push(data.meals[0]);
-        } catch (error) {
-          console.error('Error fetching data:', error.message);
         }
+      } catch (error) {
+        console.error('Error fetching data:', error.message);
+      } finally {
+        setMeals(m);
+        setLoading(false);
       }
-      setMeals(m);
     };
 
-    GetMeals();
+    getMeals();
   }, []);
 
   const settings = {
@@ -76,30 +80,43 @@ const WhatToCockToday = () => {
         <p className="text-2xl font-extrabold">What To Cook Today </p>
         <p className="text-sm text-gray-600">Fast, Fresh, and FoolProof</p>
       </div>
-      <Slider {...settings} >
-        {Meals.map((Meal) => (
-          <div className="flex flex-row items-center justify-center mt-4 hover:scale-105 transform transition duration-500">
-            <div className="h-[50%] flex items-center justify-center">
-              <img src={Meal.strMealThumb} className="rounded w-[95%] h-full" alt={Meal.strMeal} />
-            </div>
-            <div className="mx-2 h-[50%]">
-              <p className="text-left text-md truncate font-mediumbold">{Meal.strMeal}</p>
-              <p className="text-left text-xs">{Meal.strArea}</p>
-              <div className="grid grid-flow-col">
-                <Link to={`/Recipe/${Meal.idMeal}`}>
 
-                  <button className="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-full border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center">
-                    <p className="text-xs">Recipe</p>
+      {loading ? (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-75 z-50">
+          <div className="text-black text-2xl font-bold">Loading...</div>
+        </div>
+      ) : (
+        <Slider {...settings}>
+          {Meals.map((Meal) => (
+            <div
+              key={Meal.idMeal}
+              className="flex flex-row items-center justify-center mt-4 hover:scale-105 transform transition duration-500"
+            >
+              <div className="h-[50%] flex items-center justify-center">
+                <img src={Meal.strMealThumb} className="rounded w-[95%] h-full" alt={Meal.strMeal} />
+              </div>
+              <div className="mx-2 h-[50%]">
+                <p className="text-left text-md truncate font-mediumbold">{Meal.strMeal}</p>
+                <p className="text-left text-xs">{Meal.strArea}</p>
+                <div className="grid grid-flow-col">
+                  <Link to={`/Recipe/${Meal.idMeal}`}>
+                    <button
+                      className="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-full border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center"
+                    >
+                      <p className="text-xs">Recipe</p>
+                    </button>
+                  </Link>
+                  <button
+                    className="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-full border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center"
+                  >
+                    <p className="text-xs">Order</p>
                   </button>
-                </Link>
-                <button className="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-full border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center">
-                  <p className="text-xs">Order</p>
-                </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      )}
     </div>
   );
 };

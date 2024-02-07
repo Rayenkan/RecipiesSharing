@@ -40,7 +40,7 @@ const RecipeDetail = (props) => {
         </ul>
         {meal.strYoutube && (
           <iframe
-            class="w-[80%] h-[50%] my-5"
+            class="w-[80%] h-[48%] my-5"
             src={`https://www.youtube.com/embed/${meal.strYoutube.slice(-11)}`}
             title="YouTube video"
             allowFullScreen
@@ -52,7 +52,7 @@ const RecipeDetail = (props) => {
         <button class="my-2  
                                 border 
                                 w-[40%]
-                                h-12                                 
+                                h-10                                 
                                 shadow-orange-100 
                                 cursor-pointer 
                                 transition-all 
