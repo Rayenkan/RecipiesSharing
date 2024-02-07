@@ -71,15 +71,15 @@ const WhatToCockToday = () => {
   };
 
   return (
-    <div className="md:h-[40vh] lg:h-[75vh] h-[30%] mt-5 mb-5  bg-white w-[96%] ml-[2%] pt-10">
+    <div className="md:h-[40vh] lg:h-[85vh] h-[30%] mt-5  bg-white w-[96%] ml-[2%] pt-10">
       <div>
         <p className="text-2xl font-extrabold">What To Cook Today </p>
         <p className="text-sm text-gray-600">Fast, Fresh, and FoolProof</p>
       </div>
       <Slider {...settings} >
         {Meals.map((Meal) => (
-          <div className="flex flex-row items-center justify-center mt-4">
-            <div className="h-[50%] flex items-center justify-center"> {/* Center the image */}
+          <div className="flex flex-row items-center justify-center mt-4 hover:scale-105 transform transition duration-500">
+            <div className="h-[50%] flex items-center justify-center">
               <img src={Meal.strMealThumb} className="rounded w-[95%] h-full" alt={Meal.strMeal} />
             </div>
             <div className="mx-2 h-[50%]">

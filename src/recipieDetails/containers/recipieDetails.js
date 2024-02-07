@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import RecipeDetail from '../components/RecipeDetail.js';
 import Ingredients from '../components/ingrediants.js';
 import Instructions from '../components/instructions.js';
+import WhatToCockToday from '../../homePage/components/whatToCockToday.js';
+
 function RecipieDetails() {
   const {id } = useParams()
   return (
@@ -16,7 +18,7 @@ function RecipieDetails() {
         <Ingredients data={id}/>
         <Instructions data={id}/>
       </div>
-      
+      <WhatToCockToday/>
       <Footer/>
     </div>
 

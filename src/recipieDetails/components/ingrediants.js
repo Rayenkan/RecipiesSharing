@@ -31,8 +31,8 @@ const Ingredients =(props) =>{
           getAllMealingrediants();
         }, [id]);
     return (
-         <div class="w-[45%] bg-white h-[75vh] my-5 ml-5 py-5 text-left pl-10 overflow-auto">
-            <p class="text-xl font-semibold text-orange-600 pb-5">Ingredient :</p>
+         <div class="w-[45%] bg-white h-[75vh] my-5 ml-5 py-5 text-left pl-10 overflow-auto no-scrollbar shadow-sm">
+            <p class="text-3xl font-semibold text-orange-600 pb-5">Ingredient :</p>
             {ingredientsList.map((ingredient) => (
                 <ul class="list-disc">
                     <li class="py-1">{ingredient.ingredient} ({ingredient.measure})</li>

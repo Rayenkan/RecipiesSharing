@@ -75,7 +75,7 @@ const PopularCategories = () => {
       <Slider {...settings}>
         {categories.map((category) => (
           <div key={category.idCategory} className="w-52 h-36 rounded-full">
-            <img src={category.strCategoryThumb} alt={category.strCategory} className="" />
+            <img src={category.strCategoryThumb} alt={category.strCategory} className=" hover:scale-105 transform transition duration-500" />
             <p>{category.strCategory}</p>
           </div>
         ))}

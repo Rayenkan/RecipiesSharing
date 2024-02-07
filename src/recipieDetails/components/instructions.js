@@ -26,13 +26,13 @@ const Instructions = (props) => {
   }, [id]);
 
   return (
-    <div class="w-[50%] bg-white h-[75vh] my-5 mr-5 py-5 text-left ml-[5%] pl-10 overflow-auto">
-        <p class="text-xl font-semibold text-orange-600 pb-5">Instructions :</p>
-      {instructions.map((instruction) => (
-        <ul class="list-disc">
+    <div class="w-[50%] bg-white h-[75vh] my-5 mr-5 py-5 text-left ml-[5%] pl-10 shadow-sm no-scrollbar overflow-auto">
+      <p class="text-3xl font-semibold text-orange-600 pb-5">Instructions :</p>
+      <ul class="list-decimal">
+        {instructions.map((instruction) => (
           <li class="py-1">{instruction}</li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </div>
   );
 };
