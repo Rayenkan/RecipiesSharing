@@ -5,6 +5,7 @@ import HomePage from './homePage/containers/homePage';
 import RecipieDetails from './recipieDetails/containers/recipieDetails';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RecipeList from './recipeList/container/recipeList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,6 +13,7 @@ root.render(
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path='/Recipe/:id' element={<RecipieDetails />} /> 
+        <Route path='Recipes/:categorie' element={<RecipeList/>} ></Route>
       </Routes>
     </Router>
 );

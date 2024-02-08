@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const PopularCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -20,12 +21,12 @@ const PopularCategories = () => {
 
         const data = await response.json();
 
-        setCategories(data.categories);    
+        setCategories(data.categories);
       } catch (error) {
         console.error('Error fetching data:', error.message);
       }
     };
-    
+
 
     getAllMealCategories();
   }, []);
@@ -55,7 +56,7 @@ const PopularCategories = () => {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
-          dots:false
+          dots: false
         }
       },
       {
@@ -63,21 +64,23 @@ const PopularCategories = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots:false
+          dots: false
         }
       }
     ]
   };
 
   return (
-    <div className="md:h-[25vh] lg:h-[70vh] h-[30%] mt-10 mb-12 bg-orange-50 w-[96%] ml-[2%] pt-10">
+    <div className="md:h-[25vh] lg:h-[50vh] h-[30%] mt-10 bg-orange-50 w-[96%] ml-[2%] py-4">
       <h2 className="text-center mt-8 md:mb-5 text-2xl font-extrabold">Popular Categories</h2>
       <Slider {...settings}>
         {categories.map((category) => (
-          <div key={category.idCategory} className="w-52 h-36 rounded-full">
-            <img src={category.strCategoryThumb} alt={category.strCategory} className=" hover:scale-105 transform transition duration-500" />
-            <p>{category.strCategory}</p>
-          </div>
+          <Link to={`/Recipes/${category.strCategory}`}>
+            <div key={category.idCategory} className="w-52 h-36 rounded-full">
+              <img src={category.strCategoryThumb} alt={category.strCategory} className=" hover:scale-105 transform transition duration-500" />
+              <p>{category.strCategory}</p>
+            </div>
+          </Link>
         ))}
       </Slider>
     </div>
