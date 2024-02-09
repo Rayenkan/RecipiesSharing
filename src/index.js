@@ -13,7 +13,8 @@ root.render(
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path='/Recipe/:id' element={<RecipieDetails />} /> 
-        <Route path='Recipes/:categorie' element={<RecipeList/>} ></Route>
+        <Route path='/Recipes/:categorie' element={<RecipeList/>} ></Route>
+        <Route path='/Recipes' element={<RecipeList/>} ></Route>
       </Routes>
     </Router>
 );

@@ -75,41 +75,44 @@ const WhatToCockToday = () => {
   };
 
   return (
-    <div className="md:h-[40vh] lg:h-[85vh] h-[30%] mt-5  bg-white w-[96%] ml-[2%] pt-10">
+    <div class="md:h-[40vh] lg:h-[85vh] h-[30%] mt-5  bg-white w-[96%] ml-[2%] pt-10">
       <div>
-        <p className="text-2xl font-extrabold">What To Cook Today </p>
-        <p className="text-sm text-gray-600">Fast, Fresh, and FoolProof</p>
+        <p class="text-2xl font-extrabold">What To Cook Today </p>
+        <p class="text-sm text-gray-600">Fast, Fresh, and FoolProof</p>
       </div>
 
       {loading ? (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-75 z-50">
-          <div className="text-black text-2xl font-bold">Loading...</div>
+        <div class='fixed top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-75 z-50'>
+          <span class='text-4xl mr-2 font-extrabold  '>Loading</span>
+          <div class='h-6 w-6 bg-black rounded-full animate-bounce [animation-delay:-0.3s] mr-2'></div>
+          <div class='h-6 w-6 bg-black rounded-full animate-bounce [animation-delay:-0.15s] mr-2'></div>
+          <div class='h-6 w-6 bg-black rounded-full animate-bounce mr-2'></div>
         </div>
       ) : (
         <Slider {...settings}>
           {Meals.map((Meal) => (
             <div
               key={Meal.idMeal}
-              className="flex flex-row items-center justify-center mt-4 hover:scale-105 transform transition duration-500"
+              class="flex flex-row items-center justify-center mt-4 hover:scale-105 transform transition duration-500 mb-2"
             >
-              <div className="h-[50%] flex items-center justify-center">
-                <img src={Meal.strMealThumb} className="rounded w-[95%] h-full" alt={Meal.strMeal} />
+              <div class="h-[50%] flex items-center justify-center">
+                <img src={Meal.strMealThumb} class="rounded w-[95%] h-full" alt={Meal.strMeal} />
               </div>
-              <div className="mx-2 h-[50%]">
-                <p className="text-left text-md truncate font-mediumbold">{Meal.strMeal}</p>
-                <p className="text-left text-xs">{Meal.strArea}</p>
-                <div className="grid grid-flow-col">
+              <div class="mx-2 h-[50%]">
+                <p class="text-left text-md truncate font-mediumbold">{Meal.strMeal}</p>
+                <p class="text-left text-xs">{Meal.strArea}</p>
+                <div class="grid grid-flow-col">
                   <Link to={`/Recipe/${Meal.idMeal}`}>
                     <button
-                      className="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-full border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center"
+                      class="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-full border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center"
                     >
-                      <p className="text-xs">Recipe</p>
+                      <p class="text-xs">Recipe</p>
                     </button>
                   </Link>
                   <button
-                    className="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-full border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center"
+                    class="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-full border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center"
                   >
-                    <p className="text-xs">Order</p>
+                    <p class="text-xs">Order</p>
                   </button>
                 </div>
               </div>
