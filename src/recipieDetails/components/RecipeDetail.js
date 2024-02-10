@@ -41,9 +41,9 @@ const RecipeDetail = (props) => {
             )}
           </div>
           <div className="w-[50%] px-5 pt-10 text-left">
-            <p className="text-5xl font-extrabold text-orange-600 truncate">{meal.strMeal}</p>
+            <p className="text-5xl font-extrabold text-orange-600 truncate z-50 py-2">{meal.strMeal}</p>
             <ul className="list-disc">
-              <li><p className='text-sm pt-5 pl-2'><span className="text-xl">Region : </span> {meal.strArea}</p></li>
+              <li><p className='text-sm pt-2 pl-2'><span className="text-xl">Region : </span> {meal.strArea}</p></li>
               <li><p className='text-sm pt-5 pl-2'><span className="text-xl">Tags : </span> {meal.strTags}</p></li>
             </ul>
             {meal.strYoutube && (

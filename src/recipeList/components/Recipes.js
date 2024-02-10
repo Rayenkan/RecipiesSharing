@@ -110,7 +110,7 @@ const Recipes = (props) => {
 
                     <div>
                         <div class="border-2 my-2 py-4 text-center">
-                            <span>By Categorie : </span>
+                            <span class="text-orange-700 font-semibold" >By Categorie : </span>
                             {categories && (
                                 <select onChange={(e) => handleCategoryChange(e.target.value)} value={category} class="w-fit">
                                     {categories.map((c) => (
@@ -120,7 +120,7 @@ const Recipes = (props) => {
                                     ))}
                                 </select>
                             )}
-                            <span class="ml-8">By Main ingredient : </span>
+                            <span class="ml-8 text-orange-700 font-semibold">By Main ingredient : </span>
                             {ingredients && (
                                 <select onChange={(e) => handleIngredientChange(e.target.value)} value={ingredient} class="w-fit mr-8" >
                                     {ingredients.map((i) => (
@@ -130,7 +130,7 @@ const Recipes = (props) => {
                                     ))}
                                 </select>
                             )}
-                            <span>By Area : </span>
+                            <span class="text-orange-700 font-semibold">By Area : </span>
                             {areas && (
                                 <select onChange={(e) => handleAreaChange(e.target.value)} value={area} class="w-fit" >
                                     {areas.map((a) => (

@@ -18,6 +18,17 @@
     }
   }
 } 
+.mealsContainer {
+  display: grid;
+  grid-gap: 0; /* Ensure no gap between items */
+}
+.mealsContainer {
+  display: flex;
+  gap: 0; /* Ensure no gap between items */
+}
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
