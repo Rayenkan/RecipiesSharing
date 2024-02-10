@@ -2,9 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faYoutube, faGithub, faDiscord } from '@fortawesome/free-brands-svg-icons';
 
-const Footer = () => {
+const Footer = React.forwardRef((props, ref) => {
     return (
-        <div className="md:h-[20vh] lg:h-[35vh] h-[20%] mt-20 w-[100%] bg-[#E1611F] pt-5 text-white m-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-left pl-16 rounded">
+        <div className="md:h-[20vh] lg:h-[35vh] h-[20%] mt-20 w-[100%] bg-[#E1611F] pt-5 text-white m-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-left pl-16 rounded" ref={ref}>
             <div className="">
                 <p className="font-extrabold  text-4xl">Flavz</p>
                 <p className="font-normal text-sm w-[50%] pt-4">
@@ -35,6 +35,6 @@ const Footer = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Footer;

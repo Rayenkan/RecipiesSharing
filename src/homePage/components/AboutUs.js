@@ -2,11 +2,11 @@ import React from "react";
 import img from '../imgs/plateimg.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-const AboutUs =() =>{
+const AboutUs =React.forwardRef((props, ref) =>{
     return (
-        <div class="md:h-[40vh] lg:h-[70vh] h-[30%] mt-12 bg-orange-50 w-[96%] ml-[2%] pt-10 text-center ">
+        <div class="md:h-[40vh] lg:h-[70vh] h-[30%] mt-12 bg-orange-50 w-[96%] ml-[2%] pt-10 text-center " ref={ref}>
             <div class="">
-                <p class='font-semibold text-2xl'>About Us</p>
+                <p class='font-semibold text-2xl' >About Us</p>
             </div>
             <div class="grid grid-flow-col my-[2vh]">
                 <div class="lg:w-[45vw] w-[90vw] h-fit lg:h-[70%]  bg-white lg:ml-[5%] mx-4 mt-[2vh]  shadow-lg rounded ">
@@ -25,5 +25,5 @@ const AboutUs =() =>{
             </div>
         </div>
     )
-};
+});
 export default AboutUs ;

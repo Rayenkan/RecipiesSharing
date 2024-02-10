@@ -6,22 +6,30 @@ import WhatToCockToday from '../components/whatToCockToday.js';
 import AboutUs from '../components/AboutUs.js';
 import OurCommunity from '../components/ReadyToCock.js'
 import Footer from '../components/footer.js';
-import { useEffect } from 'react';
+import { useEffect , useRef } from 'react';
 
 function App() {
+  const aboutUsRef = useRef(null);
+  const contactsRef = useRef(null)
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+  const onScrollAboutUs = () => {
+    aboutUsRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  const onScrollContact =()=>{
+    contactsRef.current.scrollIntoView({ behavior: "smooth" });
+  }
   return (
     
     <div className="App  overflow-hidden ">
-      <Nav />
+      <Nav onScrollAboutUs={onScrollAboutUs } onScrollContact={onScrollContact}   />
       <PopularRecipies />
       <PopularCategories/>
       <WhatToCockToday/>
-      <AboutUs/>
+      <AboutUs ref={aboutUsRef}/>
       <OurCommunity/>
-      <Footer/>
+      <Footer ref={contactsRef} />
     </div>
 
   );
