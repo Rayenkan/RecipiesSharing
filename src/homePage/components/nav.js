@@ -51,16 +51,16 @@ const Nav = ({ onScrollAboutUs ,onScrollContact } ) => {
     return (
         <nav className={`h-20 bg-white no-underline flex items-center ${menuVisible ? 'border-b-0  ' : ' '}  relative border-b-2`}>
             <div><Link to={"/"}><label className="font-extrabold w-full text-left text-4xl text-[#E1611F] pl-4 md:pl-8 cursor-pointer">FlavZ</label></Link></div>
-            <div id="navLinks" className={`absolute  md:static ${menuVisible ? 'block' : 'hidden'} md:flex min-h-full top-0 right-0 bottom-0 left-0 md:h-20 z-10 md:z-0  w-full items-center   `}>
-                <ul className="flex md:flex-row flex-col md:items-center text-center w-[100vw] h-[100vh] md:h-full md:w-full  bg-white z-50 md:z-0 text-[#373743] gap-8 md:gap-[4vw] mt-[20%] pt-[12vh] md:mt-0 cursor-pointer">
+            <div id="navLinks" className={`absolute  md:ml-[25vw]  mr-[12vw] md:static ${menuVisible ? 'absolute' : 'hidden'} md:flex min-h-full  top-0 right-0 bottom-0 left-0 md:h-20 z-10 md:z-0  w-fit   `}>
+                <ul className="flex md:flex-row flex-col md:items-center text-center w-[100vw] h-[100vh] md:h-full   bg-white z-50 md:z-0 text-[#373743]  gap-8 md:gap-[4vw] mt-[20%] pt-[12vh] md:pt-[0%] md:w-fit   md:mt-0 cursor-pointer">
                     <li className="hover:underline hover:text-[#656C7B]"><a href="/Recipes">Recipies</a></li>
                     <li className="hover:underline hover:text-[#656C7B]"><a onClick={onScrollAboutUs}>About Us</a></li>
                     <li className="hover:underline hover:text-[#656C7B]"><a onClick={onScrollContact}>Contact</a></li>
                 </ul>
             </div>
-            <ul className={`flex items-center gap-[4vw] md:gap-[3vw]   ${menuVisible ? 'bg-white  absolute z-20 gap-[4vw]  justify-center top-[110%] left-[15vw]' : 'hidden'} `}>
+            <ul className={`flex items-center  md:gap-[3vw]   ${menuVisible ? 'bg-white md:flex  absolute md:static z-20 gap-[4vw]  justify-center top-[110%]  left-[15vw]' : ' hidden md:flex'} `}>
                 <li className="text-[#E1611F] font-sans">
-                    <div class=" alternative  align-middle  flex mr-5 ">
+                    <div class=" alternative  align-middle  flex mr-2 ">
                         <div class="rounded-lg flex flex-col ">
                             <div class="flex ">
                                 <div class="flex w-10 items-center justify-center  border-r border-gray-200 bg-gray-200 p-5">
