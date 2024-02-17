@@ -7,7 +7,7 @@ import Recipes from '../components/Recipes.js';
 function RecipeList() {
     const { categorie } = useParams();
     return (
-        <div>
+        <div class="no-scrollbar overflow-hidden">
             <Nav />
             <Recipes data={categorie} />
             <Footer />

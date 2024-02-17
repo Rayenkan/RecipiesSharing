@@ -89,7 +89,7 @@ const Nav = ({ onScrollAboutUs ,onScrollContact } ) => {
                     </div>
                 </li>
                 <li className="text-[#E1611F]"><a href="#"><FontAwesomeIcon icon={faBagShopping} /></a></li>
-                <li className="text-[#E1611F]"><a href="#"><FontAwesomeIcon icon={faUser} /></a></li>
+                <li className="text-[#E1611F]"><a href="/Login"><FontAwesomeIcon icon={faUser} /></a></li>
             </ul>
 
 

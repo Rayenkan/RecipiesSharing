@@ -15,7 +15,7 @@ function RecipieDetails() {
   }, [id])
   return (
     
-    <div className="App  overflow-hidden bg-gray-200 ">
+    <div className="App  overflow-hidden no-scrollbar bg-gray-200 ">
       <Nav />
       <RecipeDetail data={id}/>
       <div class="flex flex-row ">

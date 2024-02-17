@@ -6,6 +6,7 @@ import RecipieDetails from './recipieDetails/containers/recipieDetails';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeList from './recipeList/container/recipeList';
+import Login from './login/container/login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +16,8 @@ root.render(
         <Route path='/Recipe/:id' element={<RecipieDetails />} /> 
         <Route path='/Recipes/:categorie' element={<RecipeList/>} ></Route>
         <Route path='/Recipes' element={<RecipeList/>} ></Route>
+        <Route path='/Login' element={<Login/>} ></Route>
+        
       </Routes>
     </Router>
 );
