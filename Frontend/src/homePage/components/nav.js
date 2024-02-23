@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping, faUser, faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import styles from '../../index.css'
 
-const Nav = ({ onScrollAboutUs ,onScrollContact } ) => {
+const Nav = ({ onScrollAboutUs, onScrollContact }) => {
     const [menuIcon, setMenuIcon] = useState(faBars);
     const [menuVisible, setMenuVisible] = useState(false);
     const [count, setCount] = useState(0);
     const [search, setSearch] = useState("");
     const [meals, setMeals] = useState([]);
+    const [name , setName] = useState("")
+    const navigate = useNavigate()
     const onToggleMenu = () => {
         setMenuIcon(menuVisible ? faBars : faX);
         setMenuVisible(!menuVisible);
@@ -39,12 +42,26 @@ const Nav = ({ onScrollAboutUs ,onScrollContact } ) => {
 
         }
         searching();
-    }, [count , search])
+    }, [count, search])
+    useEffect(() => {
+        axios.get('http://localhost:8081/')
+            .then(res => {
+                if (res.data.valid){
+                    console.log(res.data.valid)
+                    setName(res.data.username)
+                    
+                }
+                else{
+                    navigate("/login"); 
+                }
+            })
+            .then(err => console.log(err))
+    }, [])
     const HandleSearch = (value) => {
         setSearch(value)
         setCount(count + 1);
     }
-    const handleLeaveInput =() =>{
+    const handleLeaveInput = () => {
         setSearch("")
     }
 
@@ -82,6 +99,7 @@ const Nav = ({ onScrollAboutUs ,onScrollContact } ) => {
                                         </Link>
                                     ))
                                 )}
+
                             </div>
 
 
