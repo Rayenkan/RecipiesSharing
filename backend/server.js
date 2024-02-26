@@ -40,7 +40,6 @@ const db = mysql.createConnection({
 
 app.get("/" , (req , res)=>{
     if (req.session.UserName){
-
         return res.json({valid : true , username:req.session.UserName})
         
     }else{

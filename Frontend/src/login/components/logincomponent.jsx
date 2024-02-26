@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import {useNavigate} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
@@ -10,10 +10,21 @@ const LoginComp = () => {
     const [UserName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error , setError] = useState("")
+    const [error , setError] = useState("");
     const navigate = useNavigate();
 
     axios.defaults.withCredentials = true
+
+    useEffect(() => {
+        axios.get('http://localhost:8081/')
+            .then(res => {
+                if (res.data.valid){
+                    navigate("/profile")
+                }
+            })
+            .then(err => console.log(err))
+    }, [])
+
     function handleSumbit(event ) {
         event.preventDefault();
         if (action === "Sign Up") {

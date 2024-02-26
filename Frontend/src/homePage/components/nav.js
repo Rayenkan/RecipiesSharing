@@ -47,12 +47,7 @@ const Nav = ({ onScrollAboutUs, onScrollContact }) => {
         axios.get('http://localhost:8081/')
             .then(res => {
                 if (res.data.valid){
-                    console.log(res.data.valid)
                     setName(res.data.username)
-                    
-                }
-                else{
-                    navigate("/login"); 
                 }
             })
             .then(err => console.log(err))
