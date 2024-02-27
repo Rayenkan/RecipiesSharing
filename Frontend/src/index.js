@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import RecipeList from './recipeList/container/recipeList';
 import Login from './login/container/login';
+import UserSettings from './profile/container/userSettings';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,7 @@ root.render(
         <Route path='/Recipes/:categorie' element={<RecipeList/>} ></Route>
         <Route path='/Recipes' element={<RecipeList/>} ></Route>
         <Route path='/Login' element={<Login/>} ></Route>
-        <Route path="/profile" element={"hello "}></Route>
+        <Route path="/profile" element={<UserSettings/>}></Route>
       </Routes>
     </Router>
 );

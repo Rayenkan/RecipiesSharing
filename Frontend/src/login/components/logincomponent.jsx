@@ -42,6 +42,7 @@ const LoginComp = () => {
     const HandleResponse =(res) =>{
         setError(res.data)
         if (res.data.login ==  true ) {
+            setError("login successfull")
              navigate("/");
         }
         
