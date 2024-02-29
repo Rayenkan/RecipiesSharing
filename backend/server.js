@@ -37,11 +37,16 @@ const db = mysql.createConnection({
   database: "RecipeWebdb",
 });
 
-
+app.get("/userDetails" , (req,res)=>{
+  const username =  req.query.name;
+  //got the user name now fetching the data for the profile 
+  
+  console.log(username);
+    
+})
 app.get("/" , (req , res)=>{
     if (req.session.UserName){
         return res.json({valid : true , username:req.session.UserName})
-        
     }else{
         return res.json({valid:false})
     }

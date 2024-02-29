@@ -1,20 +1,31 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 
 
+
 function Profile() {
-    const { id } = useParams();
+    const user = useParams()
+    useEffect(() => {
+        axios.get('http://localhost:8081/userDetails', {
+            params: {
+              name: user.name
+            }
+        }).then(res => {
+            console.log("res")
+        }).then(err => console.log(err))
+    }, []);
     return (
         <div class="no-scrollbar overflow-hidden">
-            
+
             <div class="bg-orange-50 w-full border-orange-500 rounded-lg flex flex-row ">
                 <div class="h-[80vh] text-center w-full flex flex-col bg-orange-500 text-white">
                     <div className="pfp" class="h-[30%] w-[50%] m-2 border-white rounded-lg ">
                         <img src="" alt="" srcset="" />
                     </div>
                     <div className="details " class="pl-2">
-                        <p className="name">name: {}</p>
+                        <p className="name">name: { }</p>
                         <hr />
                         <table class="text-left ">
                             <tr>
@@ -33,7 +44,7 @@ function Profile() {
                                 <td>education :</td>
                                 <td></td>
                             </tr>
-                            
+
                         </table>
                         <p className="personality">Liked recipies</p>
                         <hr />
@@ -57,11 +68,11 @@ function Profile() {
                         </p>
                     </div>
                     <div className="recipies">
-                        
+
                     </div>
                 </div>
             </div>
-            
+
         </div>
     );
 }

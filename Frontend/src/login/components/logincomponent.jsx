@@ -19,7 +19,7 @@ const LoginComp = () => {
         axios.get('http://localhost:8081/')
             .then(res => {
                 if (res.data.valid){
-                    navigate("/profile")
+                    navigate(`/profile/${res.data.username}`)
                 }
             })
             .then(err => console.log(err))

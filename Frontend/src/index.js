@@ -18,7 +18,7 @@ root.render(
         <Route path='/Recipes/:categorie' element={<RecipeList/>} ></Route>
         <Route path='/Recipes' element={<RecipeList/>} ></Route>
         <Route path='/Login' element={<Login/>} ></Route>
-        <Route path="/profile" element={<UserSettings/>}></Route>
+        <Route path="/profile/:name" element={<UserSettings/>}></Route>
       </Routes>
     </Router>
 );
