@@ -36,14 +36,27 @@ const db = mysql.createConnection({
   password: "",
   database: "RecipeWebdb",
 });
+app.get("/userDetails", (req, res) => {
+  const username = req.query.name;
 
-app.get("/userDetails" , (req,res)=>{
-  const username =  req.query.name;
-  //got the user name now fetching the data for the profile 
-  
-  console.log(username);
-    
-})
+  // Fetch the user data from the database
+  const sql = "SELECT * FROM user WHERE username = ?";
+  db.query(sql, [username], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+
+    if (result.length > 0) {
+      return res.json({ valid: true, userData: result[0] });
+    } else {
+      return res.json({ valid: false, message: "User not found" });
+    }
+  });
+
+  // Note: Avoid using console.log after sending the response, as it may lead to issues.
+});
+
 app.get("/" , (req , res)=>{
     if (req.session.UserName){
         return res.json({valid : true , username:req.session.UserName})
