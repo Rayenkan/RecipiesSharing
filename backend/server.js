@@ -4,15 +4,14 @@ const cors = require("cors");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-
-
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin : ["http://localhost:3000"],
-    methods: ['POST', 'GET'],
-    credentials : true
+  origin: ["http://localhost:3000"],
+  methods: ['POST', 'GET', 'PUT'],
+  credentials: true
 }));
+app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json())
 
@@ -23,7 +22,7 @@ app.use(
     saveUninitialized: true,
     cookie: {
       maxAge: 60000,
-      secure: false, 
+      secure: false,
       httpOnly: true,
       sameSite: 'strict',
     },
@@ -36,10 +35,23 @@ const db = mysql.createConnection({
   password: "",
   database: "RecipeWebdb",
 });
+
+app.put('/api/changePassword', (req, res) => {
+  console.log("testing !!!!!!!");
+
+  const sql = "UPDATE user SET password = ? WHERE username = ?";
+  db.query(sql, [req.body.newPassword, req.body.name], (error) => {
+    if (error) {
+      console.error("Error updating password:", error);
+      res.status(500).json({ message: "Internal server error" });
+    } else {
+      console.log("Password updated successfully");
+      res.status(200).json({ message: "Password updated successfully" });
+    }
+  });
+});
 app.get("/userDetails", (req, res) => {
   const username = req.query.name;
-
-  // Fetch the user data from the database
   const sql = "SELECT * FROM user WHERE username = ?";
   db.query(sql, [username], (err, result) => {
     if (err) {
@@ -53,16 +65,14 @@ app.get("/userDetails", (req, res) => {
       return res.json({ valid: false, message: "User not found" });
     }
   });
-
-  // Note: Avoid using console.log after sending the response, as it may lead to issues.
 });
 
-app.get("/" , (req , res)=>{
-    if (req.session.UserName){
-        return res.json({valid : true , username:req.session.UserName})
-    }else{
-        return res.json({valid:false})
-    }
+app.get("/", (req, res) => {
+  if (req.session.UserName) {
+    return res.json({ valid: true, username: req.session.UserName })
+  } else {
+    return res.json({ valid: false })
+  }
 })
 
 
@@ -83,16 +93,19 @@ app.post("/login", (req, res) => {
     });
   } else {
     const sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+    console.log(req.body.UserName)
+    console.log(req.body.password)
     db.query(sql, [req.body.UserName, req.body.password], (err, results) => {
+      console.log(err)
       if (err) {
         return res.json("Internal Server Error");
       }
       if (results.length > 0) {
-        // Setting a session variable
         req.session.UserName = results[0].username;
-        return res.json({login: true , username : req.session.UserName});
+
+        return res.json({ login: true, username: req.session.UserName });
       } else {
-        return res.json({login : false});
+        return res.json({ login: false });
       }
     });
   }
