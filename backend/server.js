@@ -36,9 +36,19 @@ const db = mysql.createConnection({
   database: "RecipeWebdb",
 });
 
+app.put('/api/addRecipe' , (req,res)=>{
+  const sql ="UPDATE user SET likedRecipies = ? WHERE username =? ";
+  db.query(sql,[req.body.likeRecipie , req.body.name] , (error)=>{
+    if (error) {
+      console.error("Error updating password:", error);
+      res.status(500).json({ message: "Internal server error" });
+    } else {
+      console.log("Recipe added successfully");
+      res.status(200).json({ message: "Recipe added successfully" });
+    }
+  })
+})
 app.put('/api/changePassword', (req, res) => {
-  console.log("testing !!!!!!!");
-
   const sql = "UPDATE user SET password = ? WHERE username = ?";
   db.query(sql, [req.body.newPassword, req.body.name], (error) => {
     if (error) {

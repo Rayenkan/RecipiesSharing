@@ -27,6 +27,7 @@ const LoginComp = () => {
 
     function handleSumbit(event) {
         event.preventDefault();
+        setError("")
         if (action === "Sign Up") {
             axios.post("http://localhost:8081/login", { action, UserName, email, password })
                 .then(res => HandleResponse(res))

@@ -6,7 +6,7 @@ const Recipes = (props) => {
     const [category, setCategory] = useState(temp)
     const [area , setArea] = useState("")
     const [ingredient , setIngredient] = useState("")
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(6);
     const [apiUrl, setApiUrl] = useState(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}&limit=${limit}`)
     const [Meals, setMeals] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -15,6 +15,8 @@ const Recipes = (props) => {
     const [ingredients, setIngredients] = useState([]);
 
     useEffect(() => {
+        console.log(limit)
+
         const getMeals = async () => {
             try {
                 console.log(apiUrl)
@@ -39,7 +41,7 @@ const Recipes = (props) => {
 
 
         getMeals();
-    }, [category, area, ingredient, limit , apiUrl , Meals]);
+    }, [category, area, ingredient, limit , apiUrl ]);
     useEffect(() => {
         const getFilters = async () => {
             try {
@@ -71,7 +73,7 @@ const Recipes = (props) => {
         getFilters();
     }, []);
     const loadMore = () => {
-        setLimit(limit + 10);
+        setLimit(limit + 6);
         setLoading(true);
     };
     const handleCategoryChange = (selectedCategory) => {
