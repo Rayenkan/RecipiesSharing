@@ -6,13 +6,14 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const UserSettings = () => {
-  const [pick, setPick] = useState("Profile");
+  const [pick, setPick] = useState("LikedRecipies");
   const user = useParams();
   const [userData, setUserData] = useState([]);
   const [imgUrl, setImgUrl] = useState(
     "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-vector-default-avatar-profile-icon-social-media-user-vector-portrait-176194876.jpg"
   );
   const [password, setPassword] = useState("");
+  
   useEffect(() => {
     axios
       .get("http://localhost:8081/userDetails", {
@@ -23,60 +24,39 @@ const UserSettings = () => {
       .then((res) => {
         setUserData(res.data.userData);
         setPassword(res.data.userData.password);
-        console.log(res.data.userData);
         if (typeof res.data.userData.img === String) {
           setImgUrl(res.data.userData.img);
         }
       })
-      .then((err) => console.log(err));
+      .catch((err) => console.log(err));
   }, [user.name]);
 
   return (
-    <div>
+    <div className="bg-gray-100 min-h-screen">
       <Nav />
-      <div class="grid grid-flow-col h-[60vh] mt-8">
-        <div class="ml-10 mr-[-10%]  w-[50%] bg-gray-50 flex flex-col text-2xl shadow-2xl border-gray-300 border-[0.1px] ">
-          <div class=" text-center w-full  text-white">
-            <div
-              className="pfp"
-              class=" flex h-[100%] w-[100%] mt-4 border-white rounded-lg "
-            >
-              <img src={imgUrl} alt="" class="h-[60%] w-[30%]" />
-              <p
-                className="name"
-                class="w-full m-auto text-4xl font-mono font-meduim text-black "
-              >
-                {userData.username}
-              </p>
+      <div className="container mx-auto py-8 px-4 lg:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="md:col-span-1 bg-white p-4 rounded-lg shadow">
+            <div className="text-center mb-4">
+              <img src={imgUrl} alt="Profile Picture" className="w-32 h-32 rounded-full mx-auto" />
+              <p className="text-lg font-bold mt-4">{userData.username}</p>
             </div>
-          </div>
-          <div>
-            <ul class="my-4 pt-5 list-disc  pl-14 w-full ">
-              <li
-                class="cursor-pointer"
-                onClick={() => setPick("ChangePassword")}
-              >
-                ChangePassword
-              </li>
-              <li
-                class="cursor-pointer"
-                onClick={() => setPick("LikedRecipies")}
-              >
-                Liked Recipes
-              </li>
+            <ul className="text-gray-700">
+              <li className="cursor-pointer py-2 border-b border-gray-200" onClick={() => setPick("ChangePassword")}>Change Password</li>
+              <li className="cursor-pointer py-2 border-b border-gray-200" onClick={() => setPick("LikedRecipies")}>Liked Recipes</li>
             </ul>
           </div>
-        </div>
-        <div class="w-[100%] shadow-2xl border-gray-300 border-[0.1px] ml-[-25%]">
-          {console.log(password)}
-          {pick === "ChangePassword" ? (
-            <ChangePassword name={user.name} password={password} />
-          ) : pick === "LikedRecipies" ? (
-            <LikedRecipies  userData={userData}/>
-          ) : null}
+          <div className="md:col-span-2 bg-white p-4 rounded-lg shadow">
+            {pick === "ChangePassword" ? (
+              <ChangePassword name={user.name} password={password} />
+            ) : pick === "LikedRecipies" ? (
+              <LikedRecipies userData={userData} />
+            ) : null}
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
 export default UserSettings;

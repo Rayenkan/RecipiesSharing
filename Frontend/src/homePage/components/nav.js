@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBagShopping, faUser, faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import styles from '../../index.css';
@@ -67,13 +67,19 @@ const Nav = ({ onScrollAboutUs, onScrollContact }) => {
     const handleLeaveInput = () => {
         setSearch("");
     };
+    const handleRecipesLink=() =>{
+        navigate("/Recipes");
+    }
+    const handleLogoClick=() =>{
+        navigate("/");
+    }
 
     return (
         <nav className={`h-20 bg-white no-underline flex items-center ${menuVisible ? 'border-b-0' : ' '}  relative border-b-2`}>
-            <div><Link to={"http://localhost:3000/"}><label className="font-extrabold w-full text-left text-4xl text-[#E1611F] pl-4 md:pl-8 cursor-pointer">FlavZ</label></Link></div>
+            <div><a onClick={handleLogoClick}><label className="font-extrabold w-full text-left text-4xl text-[#E1611F] pl-4 md:pl-8 cursor-pointer z-50">FlavZ</label></a></div>
             <div id="navLinks" className={`absolute md:ml-[25vw]  mr-[12vw] md:static ${menuVisible ? 'absolute' : 'hidden'} md:flex min-h-full  top-0 right-0 bottom-0 left-0 md:h-20 z-10 md:z-0  w-fit   `}>
                 <ul className="flex md:flex-row flex-col md:items-center text-center w-[100vw] h-[100vh] md:h-full   bg-white z-50 md:z-0 text-[#373743]  gap-8 md:gap-[4vw] mt-[20%] pt-[12vh] md:pt-[0%] md:w-fit   md:mt-0 cursor-pointer">
-                    <li className="hover:underline hover:text-[#656C7B]"><a href="http://localhost:3000/Recipes">Recipes</a></li>
+                    <li className="hover:underline hover:text-[#656C7B]"><a onClick={handleRecipesLink}>Recipes</a></li>
                     <li className="hover:underline hover:text-[#656C7B]"><a onClick={onScrollAboutUs}>About Us</a></li>
                     <li className="hover:underline hover:text-[#656C7B]"><a onClick={onScrollContact}>Contact</a></li>
                 </ul>

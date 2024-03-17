@@ -18,13 +18,12 @@ app.use(bodyParser.json())
 app.use(
   session({
     secret: 'your-secret-key',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: {
       maxAge: 60000,
       secure: false,
-      httpOnly: true,
-      sameSite: 'strict',
+      
     },
   })
 );

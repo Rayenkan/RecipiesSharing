@@ -6,7 +6,7 @@ const Recipes = (props) => {
     const [category, setCategory] = useState(temp)
     const [area , setArea] = useState("")
     const [ingredient , setIngredient] = useState("")
-    const [limit, setLimit] = useState(6);
+    const [limit, setLimit] = useState(10);
     const [apiUrl, setApiUrl] = useState(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}&limit=${limit}`)
     const [Meals, setMeals] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -73,7 +73,7 @@ const Recipes = (props) => {
         getFilters();
     }, []);
     const loadMore = () => {
-        setLimit(limit + 6);
+        setLimit(limit + 5);
         setLoading(true);
     };
     const handleCategoryChange = (selectedCategory) => {
@@ -169,11 +169,6 @@ const Recipes = (props) => {
                                                 <p className="text-xs">Recipe</p>
                                             </button>
                                         </Link>
-                                        <button
-                                            className="my-2 border w-full h-8 shadow-orange-100 cursor-pointer transition-all hover:bg-[#E1611F] bg-orange-50 text-orange-600 font-extrabold hover:text-white px-6 py-2 rounded-md border-orange-600 hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px] md:max-w-[70%] justify-center flex text-center"
-                                        >
-                                            <p className="text-xs">Order</p>
-                                        </button>
                                     </div>
                                 </div>
                             </div>

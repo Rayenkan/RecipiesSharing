@@ -42,7 +42,7 @@ const RecipeDetail = (props) => {
           likeRecipie :res.data.userData.likedRecipies 
         })
         .then((res) =>{
-          console.log(res)
+          alert("recipe added seccessfully")
         })
       });
   };
