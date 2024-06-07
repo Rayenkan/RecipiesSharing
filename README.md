@@ -15,13 +15,15 @@ Explore the live demo: [Flavz Recipe Sharing](http://your-demo-url.com)
 - View detailed information for each recipe, including ingredients and instructions
 
 ## Screenshots
-
+![Screenshot 2](appScreenshot/mainPage.png)
+![Screenshot 2](appScreenshot/Recipes.png)
+![Screenshot 2](appScreenshot/recipe.png)
+![Screenshot 2](appScreenshot/login.png)
 ![Screenshot 1](appScreenshot/changePassword.png)
 ![Screenshot 2](appScreenshot/likedrecipes.png)
-![Screenshot 2](appScreenshot/login.png)
-![Screenshot 2](appScreenshot/mainPage.png)
-![Screenshot 2](appScreenshot/recipe.png)
-![Screenshot 2](appScreenshot/Recipes.png)
+
+
+
 
 ## Getting Started
 
